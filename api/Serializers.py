@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Dresses,AddtoCart  # Make sure to import your model
+from .models import Dresses,AddtoCart,Order  # Make sure to import your model
 
 class DressSerializer(serializers.ModelSerializer):
     class Meta:
@@ -10,6 +10,11 @@ class DressSerializer(serializers.ModelSerializer):
         # fields = ['id', 'category', 'name', 'desc', 'rating', 'discount', 'price', 'sold', 'delivery', 'image'
         
 class AddtoCartSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AddtoCart
+        fields = '__all__'
+        
+class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = AddtoCart
         fields = '__all__'

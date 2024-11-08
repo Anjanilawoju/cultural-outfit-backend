@@ -2,12 +2,11 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Dresses, AddtoCart
+from .models import Dresses, AddtoCart, Order
 from .Serializers import DressSerializer, AddtoCartSerializer
 from rest_framework import viewsets 
 from rest_framework.exceptions import NotFound
 from rest_framework.decorators import api_view
-
 
 class DressListView(APIView):
     def get(self, request):
@@ -133,4 +132,3 @@ class NewArrival(APIView):
 class AddtoCartViewSet(viewsets.ModelViewSet):
     queryset = AddtoCart.objects.all()
     serializer_class = AddtoCartSerializer
-    

@@ -18,10 +18,19 @@ class Dresses(models.Model):
 
 class AddtoCart(models.Model):
     product_id = models.IntegerField()
-    quantity = models.IntegerField()
+    quantity = models.IntegerField(default=1)
     size = models.CharField(max_length=20)
-    ratings = 
+    rating = models.IntegerField(default=0)
+    review = models.TextField(blank=True, null=True, default="good")
+    preference = models.CharField(max_length=30, default="")
 
     def __str__(self):
-        return f'Product ID: {self.product_id}, Quantity: {self.quantity}'
+        return f'Product ID: {self.product_id}, Quantity: {self.quantity}, Size: {self.size}, Rating: {self.rating}, Reviews: [{self.review}]'
     
+class Order(models.Model):
+    product_id = models.IntegerField()
+    quantity = models.IntegerField(default=1)
+      # Assuming you have user authentication
+
+    def __str__(self):
+        return f'Order {self.id} - Product ID: {self.product_id}, Quantity: {self.quantity}'
